@@ -1,0 +1,70 @@
+//基本字体
+@mixin font-family{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+//width height 100%
+@mixin full-screen{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+//清除浮动
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//径向渐变，兼容ie8
+@mixin radial-gradient($from, $to){
+  background: radial-gradient($from, $to);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorStr=#{$from}, endColorStr=#{$to});
+}
+
+//placeholder-color
+@mixin plh-color($color){
+
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+  :-moz-placeholder {
+    color: $color;
+    opacity:  1;
+  }
+  ::-moz-placeholder {
+    color: $color;
+    opacity:  1;
+  }
+  :-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+//背景透明
+@mixin background-rgba($rgba){
+  background: $rgba;
+  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#{ie-hex-str($rgba)}, endColorStr=#{ie-hex-str($rgba)});
+}
+
+@mixin overflow-lines($line){
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp: $line;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+//透明度
+@mixin opacity($opacity){
+  opacity: $opacity;
+  filter: alpha(opacity=#{$opacity * 100})
+}
